@@ -85,6 +85,22 @@
       }
     `;
     document.head.appendChild(styles);
+    function createChatWindow() {
+      const windowEl = document.createElement("div");
+      windowEl.className = "chat-window";
+      windowEl.innerHTML = `
+      <div style="padding: 15px; border-bottom: 1px solid #eee; background: ${chatbotConfig.primaryColor}; color: white;">
+        <strong>${chatbotConfig.name}</strong>
+      </div>
+      <div style="flex: 1; padding: 15px; overflow-y: auto; font-family: ${chatbotConfig.fontFamily}">
+        <p>${chatbotConfig.welcomeMessage}</p>
+      </div>
+      <div style="padding: 10px; border-top: 1px solid #eee;">
+        <input type="text" placeholder="Type a message..." style="width: 100%; padding: 8px; font-family: ${chatbotConfig.fontFamily}" />
+      </div>
+    `;
+      document.querySelector("#custom-chat-widget").appendChild(windowEl);
+    }
 
     chatIcon.addEventListener("click", () => {
       const existingWindow = document.querySelector(
