@@ -8,7 +8,17 @@
     <title>Chat Bot</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <h1 style="text-align:center;">Welcome to My Chatbot Demo</h1>
+
+    <script>
+      window.customChatWidget = window.customChatWidget || {};
+      window.customChatWidget.configure = {
+        name: 'Support Bot',
+        welcomeMessage: 'Hi there! How can I help?',
+        primaryColor: '#00b894'
+      };
+    </script>
+
+    <script src="https://chat-wiget-omega.vercel.app/embed.js" async></script>
   </body>
 </html>
