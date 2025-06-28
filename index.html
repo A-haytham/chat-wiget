@@ -8,7 +8,7 @@
     <title>Chat Bot</title>
   </head>
   <body>
-    <h1 style="text-align:center;">Welcome to My Chatbot Demo</h1>
+    <h1 style="text-align: center">Welcome to My Chatbot Demo</h1>
 
     <script>
       window.customChatWidget = window.customChatWidget || {};
@@ -17,8 +17,20 @@
         welcomeMessage: 'Hi there! How can I help?',
         primaryColor: '#00b894'
       };
+      console.log('Configuration set:', window.customChatWidget.configure);
+
+      // Manual initialization after a short delay
+      setTimeout(function() {
+        console.log('Checking if widget needs manual initialization...');
+        if (!document.querySelector('#custom-chat-widget')) {
+          console.log('Widget not found, attempting manual initialization...');
+          if (window.debugCreateChatWidget) {
+            window.debugCreateChatWidget();
+          }
+        }
+      }, 2000);
     </script>
 
-    <script src="https://chat-wiget-omega.vercel.app/embed.js" async></script>
+    <script src="embed.js"></script>
   </body>
 </html>

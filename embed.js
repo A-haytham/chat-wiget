@@ -1,8 +1,5 @@
 (function () {
-  if (
-    !window.customChatWidget ||
-    window.customChatWidget.getState !== "initialized"
-  ) {
+  if (!window.customChatWidget || !window.customChatWidget.initialized) {
     // Initialize queue for handling commands before script loads
     window.customChatWidget = function (...args) {
       if (!window.customChatWidget.q) {
@@ -23,18 +20,28 @@
 
     // Load the chat widget script
     const loadWidget = function () {
+      console.log('Loading chat widget script...');
       const script = document.createElement("script");
-      script.src =
-        "https://chat-wiget-6bghmp0do-ahmeds-projects-d443845c.vercel.app/chat-widget.js";
+      script.src = "chat-widget.js";
+      script.async = true;
       script.id = "custom-chat-widget-script";
+      script.onerror = function(error) {
+        console.error('Error loading chat widget script:', error);
+      };
+      script.onload = function() {
+        console.log('Chat widget script loaded successfully');
+      };
       document.body.appendChild(script);
     };
 
     // Load script when page is ready
-    if (document.readyState === "complete") {
-      loadWidget();
+    console.log('Embed.js: Document ready state:', document.readyState);
+    if (document.readyState === 'loading') {
+      console.log('Embed.js: Document still loading, adding event listener...');
+      document.addEventListener('DOMContentLoaded', loadWidget);
     } else {
-      window.addEventListener("load", loadWidget);
+      console.log('Embed.js: Document already loaded, loading widget immediately...');
+      loadWidget();
     }
   }
 })();
