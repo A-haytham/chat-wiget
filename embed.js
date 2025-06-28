@@ -20,27 +20,31 @@
 
     // Load the chat widget script
     const loadWidget = function () {
-      console.log('Loading chat widget script...');
+      console.log("Loading chat widget script...");
       const script = document.createElement("script");
-      script.src = "chat-widget.js";
+      script.src =
+        "https://chat-wiget-git-main-ahmeds-projects-d443845c.vercel.app/chat-widget.js";
+
       script.async = true;
       script.id = "custom-chat-widget-script";
-      script.onerror = function(error) {
-        console.error('Error loading chat widget script:', error);
+      script.onerror = function (error) {
+        console.error("Error loading chat widget script:", error);
       };
-      script.onload = function() {
-        console.log('Chat widget script loaded successfully');
+      script.onload = function () {
+        console.log("Chat widget script loaded successfully");
       };
       document.body.appendChild(script);
     };
 
     // Load script when page is ready
-    console.log('Embed.js: Document ready state:', document.readyState);
-    if (document.readyState === 'loading') {
-      console.log('Embed.js: Document still loading, adding event listener...');
-      document.addEventListener('DOMContentLoaded', loadWidget);
+    console.log("Embed.js: Document ready state:", document.readyState);
+    if (document.readyState === "loading") {
+      console.log("Embed.js: Document still loading, adding event listener...");
+      document.addEventListener("DOMContentLoaded", loadWidget);
     } else {
-      console.log('Embed.js: Document already loaded, loading widget immediately...');
+      console.log(
+        "Embed.js: Document already loaded, loading widget immediately..."
+      );
       loadWidget();
     }
   }
